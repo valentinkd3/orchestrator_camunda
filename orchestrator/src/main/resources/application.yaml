@@ -1,0 +1,32 @@
+server:
+  port: 8080
+
+camunda.bpm.admin-user:
+  id:
+  password:
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/orchestrator_db
+    username:
+    password:
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+    show-sql: true
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/liquibase-changeLog.xml
+
+feign:
+  marketplace:
+    url: http://localhost:8082/
+    path: api/v1
+  user:
+    url: http://localhost:8081/
+    path: api/v1

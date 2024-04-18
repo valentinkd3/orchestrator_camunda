@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1" author="valentinkd3">
+        <createTable tableName="stock">
+            <column name="id" type="BIGSERIAL">
+                <constraints primaryKey="true" primaryKeyName="fk_marketplace"/>
+            </column>
+            <column name="item" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="price" type="DECIMAL">
+                <constraints checkConstraint="CHECK (price > 0)"/>
+            </column>
+            <column name="quantity" type="INTEGER">
+                <constraints checkConstraint="CHECK (quantity >= 0)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
